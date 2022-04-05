@@ -223,6 +223,7 @@ const develop = (ready) => {
   ready();
 };
 
+
 export const base = gulp.parallel(html, scss, js, image, avif, webp, copy);
 
 export const build = gulp.series(clear, base);
