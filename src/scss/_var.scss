@@ -1,7 +1,18 @@
+$dark: #000000;
+$dark2:#181818;
+$light: #FFFFFF;
+
+$primary:#F87C09;
+$primaryDark: #AEAAAA;
+$primaryLight: #FF922E;
+
+$secondary: #EAEAEA;
+$secondary-dark: #6B6B6B;
+
 @mixin font($name, $weight) {
     @font-face {
       font: {
-        famiiy: $name;
+        family: $name;
         weight: $weight;
         display: swap;
       }
@@ -9,3 +20,4 @@
       url("../fonts/#{ $name }-#{ $weight }.woff") format("woff");
     }
 }
+

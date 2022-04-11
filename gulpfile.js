@@ -62,7 +62,7 @@ const path  = {
         css: 'dist/css/',
         js: 'dist/js/',
         img: 'dist/img/',
-        
+
     },
     watch: {
         html: 'src/*.html',
@@ -90,7 +90,7 @@ const image = () => gulp
   })
   );
 
-const webp = () => gulp 
+const webp = () => gulp
   .src(path.src.imgF)
   .pipe(gulpWebp({
     quality: dev ? 100 : 60
@@ -101,7 +101,7 @@ const webp = () => gulp
   })
  );
 
- const avif = () => gulp 
+ const avif = () => gulp
   .src(path.src.imgF)
   .pipe(gulpAvif({
     quality: dev ? 100 : 50
@@ -183,9 +183,9 @@ export const js = () => gulp
 .pipe(browserSync.stream());
 
 
-const copy = () => gulp 
+export const copy = () => gulp
   .src(path.src.assets, {
-    base: path.dist.base,
+    base: path.src.base,
   })
   .pipe(gulp.dest(path.dist.base))
   .pipe(browserSync.stream({
@@ -199,7 +199,7 @@ export const server = () => {
         ui: false,
         notify: false,
         host: 'localHost',
-        tunnel: true,
+        // tunnel: true,
         server: {
             baseDir: path.dist.base
         }

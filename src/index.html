@@ -7,14 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Big Brother библиотека</title>
   <link rel="stylesheet" href="css/index.min.css">
-  <script src="js/index.min.js"></script>
+  <script src="js/index.min.js" defer></script>
 </head>
 
 <body>
   <section class="library">
-    <header class="header library-header">
-      <div class="container">
-        <img src="img/logo.svg" alt="Логотип Big Brother">
+    <header class="header library__header">
+      <div class="container header__container">
+        <img class="header__logo" src="img/logo.svg" alt="Логотип Big Brother">
 
         <button class="header__btn-add" aria-label="Добавить книгу"></button>
 
@@ -76,11 +76,11 @@
 
     </div>
 
-    <div class="container library__list-container">
+    <section class="container library__list-container">
       <h2 class="visually-hidden">Список книг</h2>
       <ul class="library__list">
         <li class="library__item">
-          <a href="/book">
+          <a href="/book" data-navigo>
             <article class="cart">
               <div class="cart__wrapper">
                 <img src="img/1984.jpg" alt="обложка книги: 1984" class="cart__image">
@@ -109,7 +109,7 @@
         </li>
 
         <li class="library__item">
-          <a href="#0">
+          <a href="/book" data-navigo>
             <article class="cart">
               <div class="cart__wrapper">
                 <img src="img/temp.jpg" alt="обложка книги: 1984" class="cart__image">
@@ -137,17 +137,24 @@
           </a>
         </li>
       </ul>
-    </div>
+    </section>
 
     <footer class="footer">
-      <button class="footer__btn library__add-btn" aria-label="Добавить книгу"></button>
+      <button class="footer__btn library__add-btn" aria-label="Добавить книгу">
+        <svg width="44" height="44" viewbox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="22" cy="22" r="22" fill="currentColor" />
+          <rect x="21.34" y="9.01993" width="0.44" height="25.96" fill="#242424" stroke="white" stroke-width="0.44" />
+          <rect x="9.01999" y="21.7799" width="0.44" height="25.96" transform="rotate(-90 9.01999 21.7799)"
+            fill="#242424" stroke="white" stroke-width="0.44" />
+        </svg>
+      </button>
     </footer>
 
   </section>
 
-  <section class="book">
-    <header class="header library-header">
-      <div class="container">
+  <section class="book hidden">
+    <header class="header book__header">
+      <div class="container header__container">
         <button class="header__btn header__btn_back" aria-label="Назад"></button>
 
         <button class="header__btn header__btn_delete" aria-label="Удалить"></button>
@@ -158,13 +165,13 @@
       <div class="book__wrapper">
         <img class="book__image" src="img/1984.jpg" alt="Обложка 1984">
 
-        <button class="book__label">Хочу прочитать</button>
+        <button class="book__label hidden">Хочу прочитать</button>
       </div>
 
       <div class="book__content">
-        <h2 class="book__title">Гарри Поттер и философский камень</h2>
+        <h2 class="book__title">1984</h2>
 
-        <p class="book__author">Джоан Роулинг</p>
+        <p class="book__author">Джордж Оруэлл</p>
 
         <div class="book__rating">
           <img class="book__rating-star" src="img/star.svg" alt="Рейтинг 5 из 5">
@@ -190,13 +197,14 @@
     </div>
 
     <footer class="footer">
-      <button class="footer__btn book__label">Хочу прочитать</button>
+      <button class="footer__btn book__label">хочу прочитать</button>
     </footer>
   </section>
 
-  <section class="add">
+  <section class="add hidden">
+    <h2 class="visually-hidden">Добавить книгу</h2>
     <header class="header add__header">
-      <div class="container">
+      <div class="container header__container">
         <button class="header__btn header__btn_back" aria-label="назад"></button>
 
         <button class="header__btn header__btn_search" aria-label="поиск"></button>
@@ -294,8 +302,6 @@
       </div>
 
     </form>
-
-
 
   </section>
 </body>
