@@ -1,6 +1,7 @@
 .footer {
   position: fixed;
   bottom: 0;
+  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,4 +9,18 @@
   height: 74px;
 
   background-color: $dark;
+
+  @media (max-height: 500px) {
+    right: 0;
+    width: auto;
+    padding: 20px;
+    justify-content: end;
+    background-color: transparent;
+  }
+
+  &__book {
+    @include laptop {
+      display: none;
+    }
+  }
 }
