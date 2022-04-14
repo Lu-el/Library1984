@@ -1,0 +1,46 @@
+.status {
+  margin-bottom: 40px;
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  &__radio {
+    position: absolute;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+  }
+
+  &__label {
+    padding: 8px;
+    display: inline-block;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 100%;
+    color: $dark;
+    border-radius: 16px;
+    outline: 1px solid transparent;
+    background-color: $light;
+    transition: background-color .5s ease-in-out, outline-color .1s ease-in-out;
+
+    &:hover {
+      background-color: $secondary;
+    }
+  }
+
+  &__radio:focus + &__label {
+    outline-color: $secondary-dark;
+  }
+
+  &__radio:active + &__label {
+    outline-color: $primary;
+  }
+
+  &__radio:checked + &__label {
+    outline-color: $primary;
+    background-color: $primary;
+  }
+
+}

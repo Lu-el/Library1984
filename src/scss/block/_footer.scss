@@ -20,7 +20,7 @@
 
   &__book {
     @include laptop {
-      display: none;
+      background-color: transparent;
     }
   }
 }

@@ -41,6 +41,12 @@ var __webpack_exports__ = {};
 !function() {
 "use strict";
 /* harmony import */ var navigo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(123);
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 
 var library = document.querySelector('.library');
 
@@ -48,11 +54,18 @@ var _book = document.querySelector('.book');
 
 var _add = document.querySelector('.add');
 
-var addBtns = document.querySelectorAll('.library__add-btn, .library__add-btn');
+var addBtns = document.querySelectorAll('.library__add-btn, .header__btn-add');
 var btnsBack = document.querySelectorAll('.header__btn_back');
 var btnSearch = document.querySelectorAll('.header__btn_search');
 var search = document.querySelector('.search');
 var searchClose = document.querySelector('.search__btn-close');
+var fieldBtnSort = document.querySelector('.fields__btn_sort');
+var fieldListSort = document.querySelector('.fields__list_sort');
+var fieldBtnFilter = document.querySelector('.fields__btn_filter');
+var fieldListFilter = document.querySelector('.fields__list_filter');
+var form = document.querySelector('.add__form');
+var fieldsets = document.querySelectorAll('.add__fieldset');
+var count = 0;
 var router = new navigo__WEBPACK_IMPORTED_MODULE_0__('/', {
   hash: true
 });
@@ -80,18 +93,21 @@ router.on({
   '/': function _() {
     closeAllPage();
     library.classList.remove('hidden');
+    document.body.classList.remove('body__gradient');
   },
   'book': function book() {
     closeAllPage();
 
     _book.classList.remove('hidden');
 
-    search.classList.remove('search_active');
+    document.body.classList.add('body__gradient');
   },
   'add': function add() {
     closeAllPage();
 
     _add.classList.remove('hidden');
+
+    document.body.classList.add('body__gradient');
   }
 }).resolve();
 addBtns.forEach(function (btn) {
@@ -101,18 +117,101 @@ addBtns.forEach(function (btn) {
 });
 btnsBack.forEach(function (btn) {
   btn.addEventListener('click', function () {
-    router.navigate('/');
+    if (count === 0) {
+      router.navigate('/');
+      form.reset();
+      fieldsets[count].classList.add('hidden');
+      count = 0;
+      fieldsets[count].classList.remove('hidden');
+    }
+
+    if (count >= 1) {
+      fieldsets[count].classList.add('hidden');
+      count -= 1;
+      fieldsets[count].classList.remove('hidden');
+    }
   });
 });
 btnSearch.forEach(function (btn) {
   btn.addEventListener('click', function () {
     search.classList.add('search_active');
-    document.addEventListener('click', closeSearch);
+    document.addEventListener('click', closeSearch, true);
   });
 });
 searchClose.addEventListener('click', function () {
   search.classList.remove('search_active');
 });
+
+var controlFields = function controlFields(btn, list, offList) {
+  btn.addEventListener('click', function () {
+    list.classList.toggle('fields__list_active');
+    offList.classList.remove('fields__list_active');
+  });
+  list.addEventListener('click', function (_ref2) {
+    var target = _ref2.target;
+
+    if (target.classList.contains('fields__button')) {
+      list.classList.remove('fields__list_active');
+    }
+  });
+};
+
+controlFields(fieldBtnSort, fieldListSort, fieldListFilter);
+controlFields(fieldBtnFilter, fieldListFilter, fieldListSort);
+
+var changeFieldset = function changeFieldset() {
+  var addBtn = document.querySelector('.add__btn');
+  addBtn.addEventListener('click', function (_ref3) {
+    var target = _ref3.target;
+    var fieldset = fieldsets[count];
+    console.log(fieldset);
+    var valid = true;
+
+    var _iterator = _createForOfIteratorHelper(fieldset.elements),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var elem = _step.value;
+
+        if (!elem.checkValidity()) {
+          elem.classList.add('no-valid');
+          valid = false;
+        } else {
+          elem.classList.remove('no-valid');
+        }
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+
+    if (valid) {
+      count += 1;
+
+      if (count === fieldsets.length - 1) {
+        target.textContent = 'Добавить книгу';
+      }
+
+      if (count === fieldsets.length) {
+        var data = true; // данные с сервера
+
+        if (data) {
+          form.reset();
+          router.navigate('/');
+          count = 0;
+          target.textContent = 'Далее';
+        }
+      }
+
+      fieldset.classList.add('hidden');
+      fieldsets[count].classList.remove('hidden');
+    }
+  });
+};
+
+changeFieldset();
 }();
 /******/ })()
 ;
