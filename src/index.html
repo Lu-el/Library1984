@@ -213,57 +213,58 @@
   <section class="book hidden">
     <header class="header book__header">
       <div class="container header__container">
-        <button class="header__btn header__btn_back" aria-label="Назад"></button>
+        <button class="header__btn header__btn_back book__btn_back" aria-label="Назад"></button>
 
         <button class="header__btn header__btn_delete" aria-label="Удалить"></button>
       </div>
     </header>
 
-    <div class="container book__container">
-      <div class="book__wrapper">
-        <img class="book__image" src="img/1984.jpg" alt="Обложка 1984">
+<div class="book__block">
+  <div class="container book__container">
+    <div class="book__wrapper">
+      <img class="book__image" src="img/1984.jpg" alt="Обложка 1984">
 
-        <button class="book__label book__label-btn hidden">Хочу прочитать</button>
-      </div>
-
-      <div class="book__content">
-        <h2 class="book__title">1984</h2>
-
-        <p class="book__author">Джордж Оруэлл</p>
-
-        <div class="book__rating">
-          <img class="book__rating-star" src="img/star.svg" alt="Рейтинг 5 из 5">
-          <img class="book__rating-star" src="img/star.svg" alt="">
-          <img class="book__rating-star" src="img/star.svg" alt="">
-          <img class="book__rating-star" src="img/star.svg" alt="">
-          <img class="book__rating-star" src="img/star.svg" alt="">
-        </div>
-
-        <h3 class="book__subtitle">Описание</h3>
-
-        <p class="book__description">Главный герой — Уинстон Смит — живёт в Лондоне, работает в Министерстве правды и
-          является членом внешней партии. Он не разделяет партийные лозунги и идеологию и в глубине души сильно
-          сомневается в партии, окружающей действительности и вообще во всём том, в чём только можно сомневаться. Чтобы
-          «выпустить пар» и не совершить какой-нибудь безрассудный поступок, ведёт дневник, в котором старается излагать
-          все свои сомнения. На людях же притворяется приверженцем партийных идей. Однако опасается, что девушка Джулия,
-          работающая в том же министерстве, шпионит за ним и хочет разоблачить его. В то же время полагает, что
-          высокопоставленный сотрудник их министерства, член внутренней партии некий О’Брайен также не разделяет мнения
-          партии и является подпольным революционером.</p>
-
-      </div>
-
+      <button class="book__label book__label-btn hidden">Хочу прочитать</button>
     </div>
 
-    <footer class="footer footer__book">
-      <button class="footer__btn book__label">хочу прочитать</button>
-    </footer>
+    <div class="book__content">
+      <h2 class="book__title">1984</h2>
+
+      <p class="book__author">Джордж Оруэлл</p>
+
+      <div class="book__rating">
+        <img class="book__rating-star" src="img/star.svg" alt="Рейтинг 5 из 5">
+        <img class="book__rating-star" src="img/star.svg" alt="">
+        <img class="book__rating-star" src="img/star.svg" alt="">
+        <img class="book__rating-star" src="img/star.svg" alt="">
+        <img class="book__rating-star" src="img/star.svg" alt="">
+      </div>
+
+      <h3 class="book__subtitle">Описание</h3>
+
+      <p class="book__description">Главный герой — Уинстон Смит — живёт в Лондоне, работает в Министерстве правды и
+        является членом внешней партии. Он не разделяет партийные лозунги и идеологию и в глубине души сильно
+        сомневается в партии, окружающей действительности и вообще во всём том, в чём только можно сомневаться. Чтобы
+        «выпустить пар» и не совершить какой-нибудь безрассудный поступок, ведёт дневник, в котором старается излагать
+        все свои сомнения. На людях же притворяется приверженцем партийных идей. Однако опасается, что девушка Джулия,
+        работающая в том же министерстве, шпионит за ним и хочет разоблачить его. В то же время полагает, что
+        высокопоставленный сотрудник их министерства, член внутренней партии некий О’Брайен также не разделяет мнения
+        партии и является подпольным революционером.</p>
+
+    </div>
+</div>
+
+<footer class="footer footer__book">
+  <button class="footer__btn book__label">хочу прочитать</button>
+</footer>
+</div>
   </section>
 
   <section class="add hidden">
     <h2 class="visually-hidden">Добавить книгу</h2>
     <header class="header add__header">
       <div class="container header__container">
-        <button class="header__btn header__btn_back" aria-label="назад"></button>
+        <button class="header__btn header__btn_back add__btn_back" aria-label="назад"></button>
 
         <button class="header__btn header__btn_search" aria-label="поиск"></button>
       </div>
@@ -296,7 +297,7 @@
             <label class="upload__label">
               <img src="about:blank" class="upload__preview" alt="Превью изображения">
 
-              <input type="file" class="upload__file" accept="image/*">
+              <input type="file" name="file" class="upload__file" accept="image/*">
             </label>
           </div>
 

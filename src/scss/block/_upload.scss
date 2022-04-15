@@ -10,6 +10,12 @@
     background-size: cover;
     border-radius: 6px;
     cursor: pointer;
+
+    &_active {
+      display: flex;
+      align-items: center;
+      background-image: none;
+    }
   }
 
   &__preview {

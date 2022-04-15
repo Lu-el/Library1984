@@ -991,6 +991,12 @@ fieldset {
   cursor: pointer;
 }
 
+.upload__label_active {
+  display: flex;
+  align-items: center;
+  background-image: none;
+}
+
 .upload__preview {
   display: none;
 }
@@ -1273,7 +1279,7 @@ fieldset {
   }
 
   .footer__book {
-    background-color: transparent;
+    display: none;
   }
 
   .book__header {
