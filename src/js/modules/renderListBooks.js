@@ -22,7 +22,6 @@ export const renderListBooks = async () => {
   // const labels = await getLabels();
 
   const [books, labels] = await Promise.all([getBooks(), getLabels()]);
-  console.log(books);
 
   libraryList.textContent = '';
 

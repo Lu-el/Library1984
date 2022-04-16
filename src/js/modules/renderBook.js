@@ -20,7 +20,6 @@ const getStars = (n) => {
 export const renderBook = async (id) => {
 
   const [book, labels] = await Promise.all([getBooks(id), getLabels()]);
-  console.log(book);
 
   bookBlock.textContent = '';
 

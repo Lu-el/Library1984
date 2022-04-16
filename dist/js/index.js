@@ -1029,7 +1029,6 @@ var renderListBooks = /*#__PURE__*/function () {
             _yield$Promise$all2 = _slicedToArray(_yield$Promise$all, 2);
             books = _yield$Promise$all2[0];
             labels = _yield$Promise$all2[1];
-            console.log(books);
             libraryList.textContent = '';
             books.forEach(function (_ref2) {
               var author = _ref2.author,
@@ -1045,7 +1044,7 @@ var renderListBooks = /*#__PURE__*/function () {
               libraryList.append(item);
             });
 
-          case 9:
+          case 8:
           case "end":
             return _context.stop();
         }
@@ -1096,13 +1095,12 @@ var renderBook = /*#__PURE__*/function () {
             _yield$Promise$all2 = _slicedToArray(_yield$Promise$all, 2);
             book = _yield$Promise$all2[0];
             labels = _yield$Promise$all2[1];
-            console.log(book);
             bookBlock.textContent = '';
             item = document.createElement('div');
             item.innerHTML = "\n    <div class=\"container book__container\">\n      <div class=\"book__wrapper\">\n        <img class=\"book__image\" src=\"".concat(API_URI).concat(book.image, "\" alt=\"\u041E\u0431\u043B\u043E\u0436\u043A\u0430 \u043A\u043D\u0438\u0433\u0438: ").concat(book.title, "\">\n\n        <button class=\"book__label book__label-btn hidden\">").concat(labels[book.label], "</button>\n      </div>\n\n      <div class=\"book__content\">\n        <h2 class=\"book__title\">").concat(book.title, "</h2>\n\n        <p class=\"book__author\">").concat(book.author, "</p>\n\n        <div class=\"book__rating\">\n        ").concat(renderBook_getStars(book.rating).join(''), "\n        </div>\n\n        <h3 class=\"book__subtitle\">\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435</h3>\n\n        <p class=\"book__description\">").concat(book.description, "</p>\n\n      </div>\n      </div>\n      <footer class=\"footer footer__book\">\n  <button class=\"footer__btn book__label\">").concat(labels[book.label], "</button>\n</footer>\n      ");
             bookBlock.append(item);
 
-          case 11:
+          case 10:
           case "end":
             return _context.stop();
         }
@@ -1273,7 +1271,7 @@ var sendBook = function sendBook() {
     clearPreview();
     router.navigate('/');
     count = 0;
-    target.textContent = 'Далее';
+    addBtn.textContent = 'Далее';
   }
 };
 

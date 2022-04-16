@@ -14,7 +14,7 @@ const sendBook = () => {
     clearPreview();
     router.navigate('/');
     count = 0;
-    target.textContent = 'Далее';
+    addBtn.textContent = 'Далее';
   }
 };
 
